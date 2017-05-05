@@ -1,0 +1,6 @@
+extends(src='layout.sgr')
+  block(name='content')
+    .bio
+      img(src='https://www.datocms-assets.com/2131/1493956728-caleb-png?auto=compress%2Cformat&h=150' height='150' width='150')
+      h1 Caleb Eby
+      h2 Frontend Developer, Portland, OR

@@ -1,0 +1,40 @@
+#index
+  background: linear-gradient(#B2EBF2, #00BCD4)
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 100vh
+  overflow: hidden
+
+  & .bio
+    background: white
+    padding: 15px
+    padding-top: 80px
+    margin-top: 80px
+    border-radius: 20px
+    transform: rotate(-5deg)
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 40%)
+    text-align: center
+    transition: transform 0.3s ease
+
+    @media (max-width: 450px)
+      transform: rotate(-4deg) scale(0.9)
+
+    @media (max-width: 350px)
+      transform: rotate(-4deg) scale(0.8)
+
+    @media (max-width: 320px)
+      transform: scale(0.8)
+
+    & h2
+      font-size: 20px
+      color: #585858
+
+    & img
+      position: absolute
+      height: 150px
+      border-radius: 50%
+      top: -75px
+      left: 50%
+      transform: translateX(-50%)
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 30%)
