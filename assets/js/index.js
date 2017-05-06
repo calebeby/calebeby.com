@@ -1,1 +1,2 @@
-console.log('you can use ES6 here : )')
+// Require('spike-pushstate');
+console.log('you can use ES6 here : )');

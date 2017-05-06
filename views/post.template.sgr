@@ -1,0 +1,6 @@
+extends(src='views/layout.sgr')
+  block(name='content')
+    h1 {{ item.title }}
+    h2 by Caleb Eby
+    article {{{  md(item.content) }}}
+    pre: code {{ JSON.stringify(item, null, 2) }}

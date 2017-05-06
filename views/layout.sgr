@@ -19,4 +19,4 @@ html
       block(name='content')
 
     block(name='javascript')
-      // script(src='js/main.js' defer)
+      script(src='js/main.js' defer)

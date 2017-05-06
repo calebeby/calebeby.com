@@ -1,16 +1,16 @@
-const htmlStandards = require('reshape-standard')
-const cssStandards = require('spike-css-standards')
-const {UglifyJsPlugin} = require('webpack').optimize
+const htmlStandards = require('reshape-standard');
+const cssStandards = require('spike-css-standards');
+const {UglifyJsPlugin} = require('webpack').optimize;
 
 module.exports = {
-  // disable source maps
+  // Disable source maps
   devtool: false,
-  // minify js
+  // Minify js
   plugins: [new UglifyJsPlugin()],
-  // minify html and css
-  reshape: htmlStandards({ minify: true }),
+  // Minify html and css
+  reshape: htmlStandards({minify: true}),
   postcss: cssStandards({
     minify: true,
-    warnForDuplicates: false // cssnano includes autoprefixer
-  })
-}
+    warnForDuplicates: false, // Cssnano includes autoprefixer
+  }),
+};
