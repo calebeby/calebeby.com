@@ -2,5 +2,12 @@ extends(src='views/layout.sgr')
   block(name='content')
     h1 {{ item.title }}
     h2 by Caleb Eby
-    article {{{  md(item.content) }}}
-    pre: code {{ JSON.stringify(item, null, 2) }}
+    each(loop='block in item.content')
+      if(condition='block.text')
+        article {{{  md(block.text) }}}
+      else
+        img(
+          src="{{`https://www.datocms-assets.com${block.image.path}`}}"
+          width="{{block.image.width}}"
+          height="{{block.image.height}}"
+        )

@@ -18,15 +18,21 @@ const getData = path =>
       authorization: process.env.DATOCMS_TOKEN
     }
   })
-    .then(data => data.json())
-    .then(data => data.data)
+    .then(res => res.json())
+    .then(res => res.data)
+
+const getPostContents = post =>
+  Promise.all(
+    post.content.map(fieldId => getData(`items/${fieldId}`))
+  ).then(content => {
+    post.content = content.map(block => block.attributes)
+    return post
+  })
 
 const getPosts = () =>
-  getData('items?filter[type]=happening').then(posts => {
-    return posts.map(post => {
-      return post.attributes
-    })
-  })
+  getData('items?filter[type]=post')
+    .then(posts => posts.map(post => post.attributes))
+    .then(posts => Promise.all(posts.map(getPostContents)))
 
 module.exports = {
   devtool: 'source-map',
@@ -35,6 +41,7 @@ module.exports = {
     css: '*(**/)*.sss'
   },
   ignore: [
+    'tlapse/**/*',
     '**/*.template.sgr',
     '**/layout.sgr',
     '**/_*',
@@ -51,7 +58,7 @@ module.exports = {
   plugins: [
     new Records({
       addDataTo: locals,
-      happenings: {
+      posts: {
         data: getPosts(),
         template: {
           path: 'views/post.template.sgr',
