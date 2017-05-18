@@ -5,13 +5,3 @@ extends(src='layout.sgr')
         img(src='https://secure.gravatar.com/avatar/ab911d8f439600db0412d79ee3c21541?s=150' height='150' width='150')
         h1 Caleb Eby
         h2 Frontend Developer, Portland, OR
-
-    // .posts
-    //   h1 Posts
-    //   ul
-    //     each(loop='post of posts')
-    //       li
-    //         a.post.card(href='/posts/{{post.slug}}')
-    //           h2 {{post.title}}
-    //           if(condition='post.summary')
-    //             p {{post.summary}}

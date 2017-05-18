@@ -1,6 +1,0 @@
-extends(src='layout.sgr')
-  block(name='content')
-    h1 Posts
-    each(loop='post of posts')
-      a.post-card(href='/posts/{{post.slug}}')
-        h2 {{post.title}}

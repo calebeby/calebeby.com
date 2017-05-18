@@ -5,34 +5,7 @@ const pageId = require('spike-page-id')
 const Records = require('spike-records')
 const fetch = require('node-fetch')
 
-var md = require('markdown-it')('commonmark')
-
-const locals = {
-  md: text => md.render(text)
-}
-
-const getData = path =>
-  fetch(`https://site-api.datocms.com/${path}`, {
-    headers: {
-      accept: 'application/json',
-      authorization: process.env.DATOCMS_TOKEN
-    }
-  })
-    .then(res => res.json())
-    .then(res => res.data)
-
-const getPostContents = post =>
-  Promise.all(
-    post.content.map(fieldId => getData(`items/${fieldId}`))
-  ).then(content => {
-    post.content = content.map(block => block.attributes)
-    return post
-  })
-
-const getPosts = () =>
-  getData('items?filter[type]=post')
-    .then(posts => posts.map(post => post.attributes))
-    .then(posts => Promise.all(posts.map(getPostContents)))
+const locals = {}
 
 module.exports = {
   devtool: 'source-map',
@@ -55,20 +28,8 @@ module.exports = {
       return locals
     }
   }),
-  plugins: [
-    new Records({
-      addDataTo: locals,
-      posts: {
-        data: getPosts(),
-        template: {
-          path: 'views/post.template.sgr',
-          output: post => {
-            return `posts/${post.slug}.html`
-          }
-        }
-      }
-    })
-  ],
-  postcss: cssStandards(),
+  postcss: cssStandards({
+    browsers: '> 1%'
+  }),
   babel: jsStandards()
 }
