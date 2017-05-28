@@ -1,16 +1,35 @@
 const htmlStandards = require('reshape-standard')
 const cssStandards = require('spike-css-standards')
-const {UglifyJsPlugin} = require('webpack').optimize
+const jsStandards = require('spike-js-standards')
+const pageId = require('spike-page-id')
+const Records = require('spike-records')
+const fetch = require('node-fetch')
+
+const locals = {}
 
 module.exports = {
-  // Disable source maps
-  devtool: false,
-  // Minify js
-  plugins: [],
-  // Minify html and css
-  reshape: htmlStandards({minify: true}),
+  devtool: 'source-map',
+  matchers: {
+    html: '*(**/)*.sgr',
+    css: '*(**/)*.sss'
+  },
+  ignore: [
+    'tlapse/**/*',
+    '**/*.template.sgr',
+    '**/layout.sgr',
+    '**/_*',
+    '**/.*',
+    'readme.md',
+    'yarn.lock'
+  ],
+  reshape: htmlStandards({
+    locals: ctx => {
+      locals.pageId = pageId(ctx)
+      return locals
+    }
+  }),
   postcss: cssStandards({
-    minify: true,
-    warnForDuplicates: false // Cssnano includes autoprefixer
-  })
+    browsers: '> 1%'
+  }),
+  babel: jsStandards()
 }
