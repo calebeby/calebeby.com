@@ -8,15 +8,11 @@
   },
   "bugs": "https://github.com/calebeby/www/issues",
   "dependencies": {
-    "markdown-it": "^8.3.1",
-    "node-fetch": "^1.6.3",
     "reshape-standard": "^1.0.0",
     "spike": "^1.1.0",
     "spike-css-standards": "^1.0.0",
     "spike-js-standards": "^2.0.1",
     "spike-page-id": "^1.0.0",
-    "spike-pushstate": "^0.3.0",
-    "spike-records": "^1.0.1",
     "webpack": "^2.3.3"
   },
   "devDependencies": {
