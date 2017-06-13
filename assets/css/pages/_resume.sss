@@ -100,6 +100,9 @@
       top: 50%
       transform: translateY(-50%)
 
+      @media print
+        display: none
+
       &:nth-of-type(1)
         left: -0.95em
 
@@ -127,6 +130,9 @@
       list-style-type: none
       border-bottom: 4px
 
+      @media print
+        display: block
+
       & > li
         margin: 10px
 
@@ -148,6 +154,9 @@
     width: 300px
     height: 100%
     transition: all 0.3s ease
+
+    @media print
+      width: 100%
 
     &:hover, &:focus
       box-shadow: 2px 2px 10px 1.5px gray(0%, 25%)
