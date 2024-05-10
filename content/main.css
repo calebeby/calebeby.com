@@ -1,0 +1,138 @@
+@import "@fontsource-variable/crimson-pro/wght.css";
+@import "@fontsource-variable/crimson-pro/wght-italic.css";
+
+@import "@fontsource-variable/asap/wdth.css";
+@import "@fontsource-variable/asap/wdth-italic.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: var(--font-crimson);
+  font-size: clamp(22px, 4vw, 27px);
+
+  --color-very-dark-blue: oklch(21.3% 0.4 195);
+  --color-blue-off-white: oklch(98.1% 0.016 169);
+  --color-med-dark-blue: oklch(40.9% 0.4 195);
+
+  --background: var(--color-blue-off-white);
+  --foreground: var(--color-very-dark-blue);
+
+  --font-crimson: Crimson Pro Variable, Iowan Old Style, Palatino Linotype,
+    URW Palladio L, P052, serif;
+  --font-asap: Asap Variable, Seravek, Gill Sans Nova, Ubuntu, Calibri,
+    DejaVu Sans, source-sans-pro, sans-serif;
+
+  --unit-1: 0.25rem;
+  --unit-2: calc(2 * var(--unit-1));
+  --unit-3: calc(3 * var(--unit-1));
+  --unit-4: calc(4 * var(--unit-1));
+  --unit-5: calc(5 * var(--unit-1));
+  --unit-6: calc(6 * var(--unit-1));
+  --unit-7: calc(7 * var(--unit-1));
+  --unit-8: calc(8 * var(--unit-1));
+}
+
+::selection {
+  color: var(--background);
+  background-color: var(--foreground);
+}
+
+html {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+body {
+  display: grid;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.prose-container {
+  display: grid;
+
+  justify-self: center;
+  align-self: center;
+  max-width: 30em;
+  width: calc(100% - var(--unit-8));
+  container-type: inline-size;
+
+  gap: var(--unit-2);
+
+  section,
+  div {
+    display: inherit;
+    gap: inherit;
+  }
+
+  a {
+    color: var(--color-med-dark-blue);
+
+    &:visited {
+      color: var(--color-med-dark-blue);
+    }
+  }
+
+  p {
+    text-align: justify;
+    hyphens: auto;
+    text-wrap: pretty;
+    line-height: 1.5;
+    margin: 0;
+
+    @container (width < 20em) {
+      text-align: left;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-family: var(--font-asap);
+    font-weight: 900;
+    text-wrap: pretty; /* fallback */
+    text-wrap: balance;
+    color: var(--color-med-dark-blue);
+
+    @media screen {
+      background: linear-gradient(
+        to right,
+        var(--color-med-dark-blue),
+        var(--color-very-dark-blue)
+      );
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &::selection {
+      -webkit-text-fill-color: initial;
+    }
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 2em;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 1.3em;
+    font-weight: 650;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+  }
+}

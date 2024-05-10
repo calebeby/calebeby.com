@@ -1,1 +1,0 @@
-pre: code {{{ JSON.stringify(dato, null, 2) }}}
